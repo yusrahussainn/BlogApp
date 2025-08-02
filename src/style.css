@@ -1,0 +1,690 @@
+.search-bar-container {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar-box {
+  position: relative;
+  width: 550px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+.search-input {
+  padding: 8px 50px 8px 16px;
+  font-size: 17px;
+  width: 100%;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  text-align: left;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.search-icon-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background-color: #f0f0f0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background-color: #ccc;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-img {
+  width: 22px;
+  height: 22px;
+}
+
+.mic-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mic-img {
+  width: 20px;
+  height: 20px;
+}
+
+.optionss-button
+{
+  position: "absolute";
+  top: "10px"; 
+  right: "10px"; 
+  background: "none"; 
+  border: "none";
+  cursor: "pointer";
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay.hide {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-overlay.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 350px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal-submit {
+  padding: 10px;
+  background-color: #be1f1f;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 60px;
+  padding-right: 20px;
+}
+
+.profileModal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 60px;
+  padding-left: 20px;
+}
+
+.profileModal-overlay.hide {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profileModal-overlay.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.options-box {
+  width: 300px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: absolute;
+  top: 60px;  
+  right: 150px;
+  z-index: 1100;
+  margin: 0;
+}
+
+.profile-options-box {
+  width: 300px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: absolute;
+  top: 60px;  
+  right: 1430px;
+  z-index: 1100;
+  margin: 0;
+}
+
+
+.options-list {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.options-item {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #0f0f0f;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.options-item:hover {
+  background-color: #f2f2f2;
+}
+
+.options-icon {
+  position: absolute;
+  top: 40px;
+  right: 100px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.optionss-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profilee-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profile-circle {
+  background-color: #E5D1D1;
+  border-radius: 50%;
+  width: 40px;
+  margin-left: 30px;
+  height: 40px;
+  margin-top: 20px;
+  left:30x;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.create-blog-container {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+}
+
+.create-blog-button {
+  display: flex;
+  align-items: center;
+  background-color: #fae7e7;
+  border: none;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.create-blog-button:hover {
+  background-color: #b07272;
+}
+
+.create-blog-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #8E545C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.plus-icon {
+  width: 18px;
+  height: 18px;
+  color: #ffffff;
+}
+
+.create-blog-text {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.blogs-container {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+}
+
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.blog-card {
+  border: 1px solid #000000;
+  padding: 1.25rem;
+  border-radius: 10px;
+  background-color: #E5D1D1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.blog-card h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.blog-card p {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.blogs-container {
+  padding: 20px;
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: #E5D1D1;
+  padding: 20px;
+  border-radius: 12px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-title {
+  color: #461E1E;
+  margin-bottom: 8px;
+}
+
+.blog-author,
+.blog-snippet {
+  color: black;
+  margin-bottom: 6px;
+}
+
+.blog-divider {
+  margin: 15px 0;
+  border-top: 1px solid #ccc;
+  color: black;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2em;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.1);
+}
+
+.icon-btn.share {
+  font-size: 1.7em;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #f9ebeb;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 700px;
+  max-height: 80vh;
+  width: 90%;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  overflow-y: auto;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #461E1E;
+}
+
+.popup-title {
+  color: #461E1E;
+}
+
+.popup-author,
+.popup-body {
+  color: black;
+  margin-top: 10px;
+}
+
+/* style.css */
+.new-blog-container {
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-input,
+.blog-textarea {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.blog-input:focus,
+.blog-textarea:focus {
+  outline: none;
+  border-color: #461E1E;
+}
+
+.blog-textarea {
+  resize: vertical;
+}
+
+.blog-submit-btn {
+  padding: 0.75rem;
+  background-color: #461E1E;
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-size: large;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition: background 0.2s ease-in-out;
+}
+
+.blog-submit-btn:hover {
+  background-color: #872525;
+}
+
+.blog-submit-btn.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+
+
+.create-blog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.create-blog-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #461E1E;
+}
+
+.app-container {
+  font-family: sans-serif;
+}
+
+.header-maroon {
+  background-color: #461E1E;
+  color: white;
+  padding: 20px 20px 150px;
+  position: relative;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header-title {
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+  font-size: 2rem;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+  opacity: 0.95;
+}
+
+.main-content {
+  margin-top: -40px;
+  padding: 0 20px;
+}
+
+.blogs-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-top: 40px;
+}
+
+.m-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: visibility 0.3s, opacity 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.m-modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.m-modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  min-width: 500px;
+  max-width: 500px;
+  width: 90%; 
+  position: relative;
+}
+
+.m-modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
