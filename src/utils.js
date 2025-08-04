@@ -22,9 +22,9 @@ export const isValidEmail = (email) => email.includes('@');
 
 export const shareBlogByEmail = async (templateParams) => {
   return await emailjs.send(
-    'service_gj54w1j',
-    'template_as9p5aq',
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,
+     import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
     templateParams,
-    '8VJdFh8AMyhlUR5Bw'
+    import.meta.env.VITE_EMAILJS_USER_ID
   );
 };
