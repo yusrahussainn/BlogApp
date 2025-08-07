@@ -13,13 +13,13 @@ import CreateBlog from "./components/CreateBlog";
 import Blogs from "./components/Blogs";
 import Header from "./components/Header";
 import { fetchBlogsFromFirestore } from "./utils";
-import useModal from "./hooks/useModal";
 
 export default function App() {
   const dispatch = useDispatch();
-  const modal = useModal();
-  const profileModal = useModal();
-  const blogs = useSelector((state) => state.blogs.list);
+
+  const blogs = useSelector((state) => state.blogs.filteredList || state.blogs.list);
+  const isOptionsModalOpen = useSelector((state) => state.ui.isOptionsModalOpen);
+  const isProfileModalOpen = useSelector((state) => state.ui.isProfileModalOpen);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -37,21 +37,27 @@ export default function App() {
     <div className="app-container">
       <Header
         onSearch={handleSearch}
-        onOptionClick={modal.open}
-        onProfileClick={profileModal.open}
+        onOptionClick={() => dispatch(openModal())}
+        onProfileClick={() => dispatch(openProfileModal())}
       />
 
       <div className="main-content">
         <Options
-          isVisible={modal.isOpen}
-          onClose={modal.close}
-          onProfileClick={profileModal.open}
+          isVisible={isOptionsModalOpen}
+          onClose={() => dispatch(closeModal())}
+          onProfileClick={() => {
+            dispatch(closeModal());
+            dispatch(openProfileModal());
+          }}
         />
+
         <Profile
-          isVisible={profileModal.isOpen}
-          onClose={profileModal.close}
+          isVisible={isProfileModalOpen}
+          onClose={() => dispatch(closeProfileModal())}
         />
+
         <CreateBlog />
+
         <div className="blogs-container">
           <Blogs blogs={blogs} />
         </div>
