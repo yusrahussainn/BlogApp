@@ -3,7 +3,9 @@ import "../style.css";
 
 export default function Modal({ isVisible, onClose, children }) {
   return (
+    
     <div className={`m-modal-overlay ${isVisible ? "visible" : "hidden"}`} onClick={onClose}>
+
       <div
         className="m-modal-content"
         onClick={(e) => e.stopPropagation()}
@@ -17,8 +19,12 @@ export default function Modal({ isVisible, onClose, children }) {
         >
           ×
         </button>
+
         {children}
+
       </div>
+
     </div>
+
   );
 }

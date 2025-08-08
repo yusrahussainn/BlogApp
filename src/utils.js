@@ -7,13 +7,6 @@ export const fetchBlogsFromFirestore = async () => {
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 };
 
-export async function fetchAndFilterBlogs(term) {
-  const blogsRef = collection(db, "blogs");
-  const snapshot = await getDocs(blogsRef);
-  const allBlogs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  return allBlogs.filter(b => b.title?.toLowerCase().includes(term.toLowerCase()));
-}
-
 export const isEmptyOrWhitespace = (str) => {
   return !str || str.trim() === "";
 };

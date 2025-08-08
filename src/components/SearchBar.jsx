@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import img from "../assets/Search.png";
 import "../style.css";
-import { fetchAndFilterBlogs } from "../utils";
+import { filterBlogs } from "../redux/blogsSlice";
+import { useDispatch } from "react-redux";
 
 export default function SearchBar({ onSearch }) {
   const [term, setTerm] = useState("");
+   const dispatch = useDispatch();
 
-  const handleSearch = async () => {
+  const handleSearch = () => {
     if (term.trim()) {
-      const filtered = await fetchAndFilterBlogs(term);
-      onSearch(filtered);
+      dispatch(filterBlogs(term));
     }
   };
 
@@ -19,7 +20,9 @@ export default function SearchBar({ onSearch }) {
 
   return (
     <div className="search-bar-container">
+
       <div className="search-bar-box">
+
         <input
           type="text"
           placeholder="Search"
@@ -28,13 +31,19 @@ export default function SearchBar({ onSearch }) {
           onChange={(e) => setTerm(e.target.value)}
           onKeyDown={handleKeyDown}
         />
+
         <div className="search-icon-container">
+
           <div className="divider" />
+          
           <button type="button" className="search-button" onClick={handleSearch}>
             <img src={img} alt="search" className="search-img" />
           </button>
+
         </div>
+
       </div>
+
     </div>
   );
 }

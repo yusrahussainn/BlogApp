@@ -4,8 +4,11 @@ import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import "../style.css";
 import InputField from "./InputField";
+import { createBlog } from "../redux/blogsSlice";
+import { useDispatch } from "react-redux";
 
 const NewBlog = ({ onClose }) => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -16,28 +19,22 @@ const NewBlog = ({ onClose }) => {
   const [submitError, setSubmitError] = useState("");
 
   const onSubmit = async (data) => {
-    setSubmitError("");
-
-    try {
-      await addDoc(collection(db, "blogs"), {
-        title: data.title.trim(),
-        content: data.content.trim(),
-        author: data.author.trim(),
-        likes: 0,
-        createdAt: serverTimestamp(),
-      });
-
-      reset();
-      if (onClose) onClose();
-    } catch (error) {
-      setSubmitError("Error creating bloh: " + error.message);
-    }
-  };
+  try {
+    await dispatch(createBlog(data)).unwrap();
+    reset();
+    if (onClose) onClose();
+  } catch (error) {
+    setSubmitError("Error creating blog: " + error);
+  }
+};
 
   return (
     <div className="new-blog-container">
+
       <h2>Create New Blog</h2>
+
       <form onSubmit={handleSubmit(onSubmit)} className="blog-form">
+
         <InputField
           placeholder="Blog Title"
           {...register("title", {
@@ -54,6 +51,7 @@ const NewBlog = ({ onClose }) => {
             validate: (val) => val.trim() !== "" || "Author cannot be empty",
           })}
         />
+
         {errors.author && <p className="error-text">{errors.author.message}</p>}
 
         <textarea
@@ -65,6 +63,7 @@ const NewBlog = ({ onClose }) => {
             validate: (val) => val.trim() !== "" || "Content cannot be empty",
           })}
         />
+        
         {errors.content && <p className="error-text">{errors.content.message}</p>}
 
         {submitError && <p className="error-text">{submitError}</p>}
@@ -76,7 +75,9 @@ const NewBlog = ({ onClose }) => {
         >
           {isSubmitting ? "Publishing..." : "Publish"}
         </button>
+
       </form>
+
     </div>
   );
 };
